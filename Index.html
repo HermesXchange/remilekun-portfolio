@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remilekun Peter Ayorinde - Executive Virtual Assistant</title>
+    <style>
+        :root {
+            --color-primary: #1B7D9F;
+            --color-primary-dark: #0F5A7A;
+            --color-accent: #E8F4F8;
+            --color-navy: #1A3A52;
+            --color-cream: #F9F7F4;
+            --color-text: #2C3E50;
+            --color-text-light: #5A6C7D;
+            --color-border: #E0E8ED;
+            --color-success: #27AE60;
+            --color-white: #FFFFFF;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 40px;
+            --spacing-xl: 60px;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-family); line-height: 1.6; color: var(--color-text); background-color: var(--color-cream); overflow-x: hidden; }
+        nav { position: sticky; top: 0; background: var(--color-white); box-shadow: var(--shadow-sm); z-index: 1000; padding: var(--spacing-sm) 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-md); display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 20px; font-weight: 700; color: var(--color-primary); text-decoration: none; transition: var(--transition); }
+        .nav-logo:hover { color: var(--color-primary-dark); }
+        .nav-links { display: flex; gap: var(--spacing-md); list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--color-text); font-size: 14px; font-weight: 500; transition: var(--transition); padding: 8px 12px; }
+        .nav-links a:hover, .nav-links a.active { color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+        .hero { background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-primary) 100%); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-md); text-align: center; min-height: 500px; display: flex; align-items: center; justify-content: center; }
+        .hero-container { max-width: 800px; }
+        .hero-subtitle { font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; opacity: 0.9; margin-bottom: var(--spacing-sm); }
+        .hero-title { font-size: 48px; font-weight: 700; margin-bottom: var(--spacing-md); line-height: 1.2; }
+        .hero-description { font-size: 18px; margin-bottom: var(--spacing-lg); opacity: 0.95; line-height: 1.8; }
+        .hero-profile { width: 150px; height: 150px; margin: 0 auto var(--spacing-md); border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); border: 4px solid var(--color-white); }
+        .hero-profile img { width: 100%; height: 100%; object-fit: cover; }
+        .cta-buttons { display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 12px 28px; border: none; border-radius: var(--border-radius); font-size: 16px; font-weight: 600; cursor: pointer; transition: var(--transition); text-decoration: none; display: inline-block; text-align: center; }
+        .btn-primary { background-color: var(--color-white); color: var(--color-primary); }
+        .btn-primary:hover { background-color: var(--color-accent); transform: translateY(-2px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+        .btn-secondary { background-color: transparent; color: var(--color-white); border: 2px solid var(--color-white); }
+        .btn-secondary:hover { background-color: var(--color-white); color: var(--color-primary); }
+        @media (max-width: 768px) { .hero-title { font-size: 36px; } .hero-description { font-size: 16px; } }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-md); }
+        section { padding: var(--spacing-xl) 0; }
+        .section-title { font-size: 36px; font-weight: 700; margin-bottom: var(--spacing-lg); text-align: center; color: var(--color-navy); }
+        .section-subtitle { font-size: 16px; color: var(--color-text-light); text-align: center; margin-top: -10px; margin-bottom: var(--spacing-lg); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .service-card { background: var(--color-white); padding: var(--spacing-md); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); transition: var(--transition); border-left: 4px solid var(--color-primary); }
+        .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .service-icon { width: 50px; height: 50px; background-color: var(--color-accent); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: var(--spacing-sm); }
+        .service-card h3 { font-size: 18px; margin-bottom: var(--spacing-sm); color: var(--color-navy); }
+        .service-card p { font-size: 14px; color: var(--color-text-light); line-height: 1.7; margin-bottom: var(--spacing-sm); }
+        .service-highlight { background-color: var(--color-accent); padding: 10px; border-radius: var(--border-radius); font-size: 13px; color: var(--color-primary); font-weight: 600; display: inline-block; }
+        .work-samples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .work-sample { background: var(--color-white); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .work-sample:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .work-sample-header { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%); color: var(--color-white); padding: var(--spacing-md); text-align: center; }
+        .work-sample-number { font-size: 32px; font-weight: 700; opacity: 0.7; }
+        .work-sample-title { font-size: 20px; font-weight: 700; margin: var(--spacing-sm) 0; }
+        .work-sample-body { padding: var(--spacing-md); }
+        .work-sample-body h4 { color: var(--color-navy); margin-bottom: var(--spacing-sm); font-size: 16px; }
+        .work-sample-body p { font-size: 14px; color: var(--color-text-light); margin-bottom: var(--spacing-sm); line-height: 1.7; }
+        .challenge, .solution, .results { margin-bottom: var(--spacing-md); }
+        .results { background-color: #E8F8F3; padding: var(--spacing-sm); border-radius: var(--border-radius); border-left: 4px solid var(--color-success); }
+        .results strong { color: var(--color-success); }
+        .work-visuals { padding: 0 var(--spacing-md) var(--spacing-md); display: flex; flex-direction: column; gap: 12px; }
+        .visual-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+        .visual-label::before { content: ''; display: inline-block; width: 14px; height: 2px; background: var(--color-primary); }
+        .visual-box { border: 1px solid var(--color-border); border-radius: var(--border-radius); overflow: hidden; }
+        .visual-box svg { display: block; width: 100%; height: auto; }
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .skills-category { background: var(--color-white); padding: var(--spacing-md); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); }
+        .skills-category h3 { color: var(--color-primary); margin-bottom: var(--spacing-sm); font-size: 16px; }
+        .skills-list { display: flex; flex-wrap: wrap; gap: 8px; }
+        .skill-tag { background-color: var(--color-accent); color: var(--color-primary); padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .testimonial { background: var(--color-white); padding: var(--spacing-md); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-primary); }
+        .testimonial-text { font-size: 15px; font-style: italic; color: var(--color-text-light); margin-bottom: var(--spacing-sm); line-height: 1.8; }
+        .testimonial-author { font-size: 14px; font-weight: 600; color: var(--color-navy); }
+        .who-help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .help-card { background: var(--color-white); padding: var(--spacing-md); border-radius: var(--border-radius); box-shadow: var(--shadow-sm); text-align: center; transition: var(--transition); }
+        .help-card:hover { transform: translateY(-4px); background-color: var(--color-accent); }
+        .help-icon { font-size: 36px; margin-bottom: var(--spacing-sm); }
+        .help-card h3 { color: var(--color-navy); margin-bottom: var(--spacing-sm); }
+        .help-card p { font-size: 14px; color: var(--color-text-light); }
+        .contact { background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-primary) 100%); color: var(--color-white); padding: var(--spacing-xl) var(--spacing-md); text-align: center; margin-top: var(--spacing-xl); }
+        .contact-container { max-width: 600px; margin: 0 auto; }
+        .contact h2 { font-size: 32px; margin-bottom: var(--spacing-md); }
+        .contact p { font-size: 16px; margin-bottom: var(--spacing-lg); line-height: 1.8; }
+        .contact-links { display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap; margin-bottom: var(--spacing-lg); }
+        .contact-link { background: var(--color-white); color: var(--color-primary); padding: 12px 24px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
+        .contact-link:hover { background-color: var(--color-accent); transform: translateY(-2px); }
+        .contact-info { font-size: 14px; opacity: 0.9; margin-top: var(--spacing-lg); }
+        footer { background-color: var(--color-navy); color: var(--color-white); text-align: center; padding: var(--spacing-lg) var(--spacing-md); font-size: 14px; }
+        @media (max-width: 768px) {
+            :root { --spacing-lg: 30px; --spacing-xl: 40px; }
+            .section-title { font-size: 28px; }
+            .services-grid, .work-samples-grid, .skills-container, .testimonials-grid, .who-help-grid { grid-template-columns: 1fr; }
+            .cta-buttons, .contact-links { flex-direction: column; }
+            .btn, .contact-link { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+<nav>
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">Remilekun</a>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#work" class="nav-link">Work Samples</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<section id="home" class="hero">
+  <div class="hero-container">
+    <div class="hero-profile"><img src="profile.jpg" alt="Remilekun Peter Ayorinde - Executive Virtual Assistant"></div>
+    <h1 class="hero-title">Remilekun Peter Ayorinde</h1>
+    <p class="hero-subtitle">Executive Virtual Assistant</p>
+    <p class="hero-description">Helping busy founders, CEOs, and small business owners regain control of their time, inbox, and operations — so they can focus on strategy, growth, and execution.</p>
+    <div class="cta-buttons">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="#work" class="btn btn-secondary">View My Work</a>
+    </div>
+  </div>
+</section>
+<section id="services">
+  <div class="container">
+    <h2 class="section-title">What I Do</h2>
+    <p class="section-subtitle">Comprehensive support across all aspects of executive operations</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">📧</div><h3>Inbox &amp; Email Management</h3><p>Read, write, send, and reply to emails with precision. I organize your inbox with strategic labeling, create email filters, and maintain correspondence that reflects your voice.</p><span class="service-highlight">Clean inbox • Faster responses • Zero missed emails</span></div>
+      <div class="service-card"><div class="service-icon">📅</div><h3>Calendar &amp; Meeting Scheduling</h3><p>Manage your calendar like a pro — scheduling meetings, avoiding conflicts, coordinating across time zones, sending reminders, and preparing you for every engagement.</p><span class="service-highlight">Optimized schedule • Coordinated meetings • Briefings ready</span></div>
+      <div class="service-card"><div class="service-icon">🔍</div><h3>Research &amp; Documentation</h3><p>Conduct thorough research on market trends, competitors, investors, and industry insights. Deliver findings in clear, actionable reports and presentations.</p><span class="service-highlight">Market intelligence • Competitive analysis • Executive reports</span></div>
+      <div class="service-card"><div class="service-icon">👥</div><h3>Client &amp; Admin Management</h3><p>Handle client relationships, follow-ups, and administrative tasks that keep operations running smoothly. Nothing falls through the cracks.</p><span class="service-highlight">Organized relationships • Timely follow-ups • Smooth operations</span></div>
+      <div class="service-card"><div class="service-icon">📊</div><h3>Data Entry, Reports &amp; Tracking</h3><p>Input, organize, and analyze data into spreadsheets and dashboards. Create expense reports, performance summaries, and progress trackers.</p><span class="service-highlight">Accurate data • Organized dashboards • Real-time metrics</span></div>
+      <div class="service-card"><div class="service-icon">⚙️</div><h3>Tool Setup &amp; Workflow Organization</h3><p>Set up and optimize your productivity stack — Google Workspace, Asana, Trello, Calendly, Slack, CRM systems, and more. Create SOPs and automate workflows.</p><span class="service-highlight">Organized systems • Automated workflows • Team efficiency</span></div>
+    </div>
+  </div>
+</section>
+<section id="work" style="background-color:#F5F5F5;">
+  <div class="container">
+    <h2 class="section-title">Work Samples &amp; Case Studies</h2>
+    <p class="section-subtitle">Real projects that delivered measurable results</p>
+    <div class="work-samples-grid">
+
+
+  <!-- 01 CALENDAR -->
+  <div class="work-sample">
+    <div class="work-sample-header"><div class="work-sample-number">01</div><h3 class="work-sample-title">Calendar Management for CEO</h3></div>
+    <div class="work-sample-body">
+      <div class="challenge"><h4>🎯 The Challenge</h4><p>Managing a CEO's calendar with 15+ meetings/day across multiple time zones with frequent changes.</p></div>
+      <div class="solution"><h4>✅ What I Did</h4><p>• Designed organized calendar system with color-coding<br>• Implemented automated reminders &amp; prep notes<br>• Created coordination workflow with stakeholders<br>• Set up focus time blocks &amp; deep work hours</p></div>
+      <div class="results"><h4>📈 Results</h4><p><strong>50% reduction</strong> in scheduling conflicts • <strong>40% fewer</strong> missed appointments • <strong>4+ hours</strong> of weekly focus time gained</p></div>
+    </div>
+    <div class="work-visuals">
+      <div class="visual-label">Color-Coded Weekly Calendar</div>
+      <div class="visual-box"><svg viewBox="0 0 460 230" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="230" fill="#fff"/>
+        <rect width="460" height="40" fill="#1A73E8"/>
+        <text x="12" y="16" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.7)" letter-spacing="1">GOOGLE CALENDAR</text>
+        <text x="12" y="32" font-family="sans-serif" font-size="12" fill="#fff" font-weight="600">Week of March 3–7, 2025 — CEO Dashboard</text>
+        <rect y="40" width="460" height="24" fill="#f1f3f4"/>
+        <text x="56" y="57" font-family="sans-serif" font-size="9" fill="#70757a" text-anchor="middle">MON 3</text>
+        <text x="140" y="57" font-family="sans-serif" font-size="9" fill="#70757a" text-anchor="middle">TUE 4</text>
+        <text x="224" y="57" font-family="sans-serif" font-size="9" fill="#1A73E8" font-weight="700" text-anchor="middle">WED 5</text>
+        <text x="308" y="57" font-family="sans-serif" font-size="9" fill="#70757a" text-anchor="middle">THU 6</text>
+        <text x="392" y="57" font-family="sans-serif" font-size="9" fill="#70757a" text-anchor="middle">FRI 7</text>
+        <text x="28" y="83" font-family="sans-serif" font-size="7.5" fill="#70757a" text-anchor="end">9AM</text>
+        <text x="28" y="109" font-family="sans-serif" font-size="7.5" fill="#70757a" text-anchor="end">10</text>
+        <text x="28" y="135" font-family="sans-serif" font-size="7.5" fill="#70757a" text-anchor="end">11</text>
+        <text x="28" y="161" font-family="sans-serif" font-size="7.5" fill="#70757a" text-anchor="end">12</text>
+        <text x="28" y="187" font-family="sans-serif" font-size="7.5" fill="#70757a" text-anchor="end">1PM</text>
+        <text x="28" y="213" font-family="sans-serif" font-size="7.5" fill="#70757a" text-anchor="end">2PM</text>
+        <line x1="32" y1="84" x2="460" y2="84" stroke="#e8eaed"/><line x1="32" y1="110" x2="460" y2="110" stroke="#e8eaed"/><line x1="32" y1="136" x2="460" y2="136" stroke="#e8eaed"/><line x1="32" y1="162" x2="460" y2="162" stroke="#e8eaed"/><line x1="32" y1="188" x2="460" y2="188" stroke="#e8eaed"/><line x1="32" y1="214" x2="460" y2="214" stroke="#e8eaed"/>
+        <line x1="98" y1="64" x2="98" y2="230" stroke="#e8eaed"/><line x1="182" y1="64" x2="182" y2="230" stroke="#e8eaed"/><line x1="266" y1="64" x2="266" y2="230" stroke="#e8eaed"/><line x1="350" y1="64" x2="350" y2="230" stroke="#e8eaed"/>
+        <rect x="34" y="84" width="60" height="22" rx="3" fill="#1A73E8"/><text x="38" y="94" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Team Standup</text><text x="38" y="102" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">9:00–9:30</text>
+        <rect x="34" y="136" width="60" height="34" rx="3" fill="#34A853"/><text x="38" y="148" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Investor Call</text><text x="38" y="158" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">11:00–11:45</text><text x="38" y="166" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,.7)">Zoom</text>
+        <rect x="34" y="188" width="60" height="22" rx="3" fill="#FBBC04"/><text x="38" y="198" font-family="sans-serif" font-size="7.5" fill="#333" font-weight="600">Deep Work</text><text x="38" y="207" font-family="sans-serif" font-size="6.5" fill="#555">1:00–2:00</text>
+        <rect x="100" y="110" width="60" height="34" rx="3" fill="#EA4335"/><text x="104" y="122" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Board Review</text><text x="104" y="132" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">10:00–10:45</text><text x="104" y="140" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,.7)">Conf Room A</text>
+        <rect x="100" y="162" width="60" height="34" rx="3" fill="#1A73E8"/><text x="104" y="174" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Client Onboard</text><text x="104" y="184" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">12:00–12:45</text><text x="104" y="192" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,.7)">Teams</text>
+        <rect x="184" y="84" width="60" height="22" rx="3" fill="#34A853"/><text x="188" y="94" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Strategy Sync</text><text x="188" y="102" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">9:00–9:30</text>
+        <rect x="184" y="136" width="60" height="18" rx="3" fill="#fff" stroke="#1A73E8" stroke-width="1.5"/><text x="188" y="146" font-family="sans-serif" font-size="7.5" fill="#1A73E8" font-weight="600">Focus Block</text><text x="188" y="151" font-family="sans-serif" font-size="6" fill="#70757a">12:30–1:00</text>
+        <rect x="184" y="188" width="60" height="34" rx="3" fill="#9C27B0"/><text x="188" y="200" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">1:1 with COO</text><text x="188" y="210" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">1:00–1:45</text><text x="188" y="218" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,.7)">Office</text>
+        <rect x="268" y="84" width="60" height="22" rx="3" fill="#FBBC04"/><text x="272" y="94" font-family="sans-serif" font-size="7.5" fill="#333" font-weight="600">Deep Work</text><text x="272" y="102" font-family="sans-serif" font-size="6.5" fill="#555">9:00–10:00</text>
+        <rect x="268" y="162" width="60" height="34" rx="3" fill="#EA4335"/><text x="272" y="174" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Product Demo</text><text x="272" y="184" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">12:00–12:45</text><text x="272" y="192" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,.7)">Zoom</text>
+        <rect x="352" y="110" width="60" height="22" rx="3" fill="#1A73E8"/><text x="356" y="120" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Weekly Review</text><text x="356" y="129" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">10:00–10:30</text>
+        <rect x="352" y="188" width="60" height="34" rx="3" fill="#34A853"/><text x="356" y="200" font-family="sans-serif" font-size="7.5" fill="#fff" font-weight="600">Team Retro</text><text x="356" y="210" font-family="sans-serif" font-size="6.5" fill="rgba(255,255,255,.85)">1:00–1:45</text><text x="356" y="218" font-family="sans-serif" font-size="6" fill="rgba(255,255,255,.7)">Meet</text>
+      </svg></div>
+      <div class="visual-label">Results Dashboard</div>
+      <div class="visual-box"><svg viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="150" fill="#fff"/>
+        <rect width="460" height="34" fill="#1A3A52"/>
+        <text x="12" y="15" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)" letter-spacing="1">CALENDAR MANAGEMENT — OUTCOME REPORT</text>
+        <text x="12" y="28" font-family="sans-serif" font-size="11" fill="#fff" font-weight="600">Before vs. After: CEO Calendar Optimization</text>
+        <rect x="10" y="44" width="130" height="96" rx="5" fill="#FFEBEE"/>
+        <text x="75" y="62" font-family="sans-serif" font-size="9" fill="#C62828" font-weight="700" text-anchor="middle">BEFORE</text>
+        <text x="75" y="84" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">15+ meetings/day</text>
+        <text x="75" y="100" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">No focus time</text>
+        <text x="75" y="116" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">Constant conflicts</text>
+        <text x="75" y="132" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">Reactive days</text>
+        <text x="155" y="100" font-family="sans-serif" font-size="24" fill="#1B7D9F" text-anchor="middle">→</text>
+        <rect x="168" y="44" width="130" height="96" rx="5" fill="#E8F5E9"/>
+        <text x="233" y="62" font-family="sans-serif" font-size="9" fill="#1B5E20" font-weight="700" text-anchor="middle">AFTER</text>
+        <text x="233" y="84" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">50% fewer conflicts</text>
+        <text x="233" y="100" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">4hrs focus/week</text>
+        <text x="233" y="116" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">40% fewer missed</text>
+        <text x="233" y="132" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">Strategic days</text>
+        <rect x="314" y="44" width="136" height="96" rx="5" fill="#E8F4F8"/>
+        <text x="382" y="64" font-family="sans-serif" font-size="8.5" fill="#1B7D9F" font-weight="700" text-anchor="middle">TOOLS USED</text>
+        <text x="382" y="82" font-family="sans-serif" font-size="9" fill="#2C3E50" text-anchor="middle">Google Calendar</text>
+        <text x="382" y="98" font-family="sans-serif" font-size="9" fill="#2C3E50" text-anchor="middle">Color-coding system</text>
+        <text x="382" y="114" font-family="sans-serif" font-size="9" fill="#2C3E50" text-anchor="middle">Calendly + Zoom</text>
+        <text x="382" y="130" font-family="sans-serif" font-size="9" fill="#2C3E50" text-anchor="middle">SOP documentation</text>
+      </svg></div>
+    </div>
+  </div>
+
+  <!-- 02 RESEARCH -->
+  <div class="work-sample">
+    <div class="work-sample-header"><div class="work-sample-number">02</div><h3 class="work-sample-title">Competitive Research &amp; Analysis</h3></div>
+    <div class="work-sample-body">
+      <div class="challenge"><h4>🎯 The Challenge</h4><p>SaaS founder needed competitive landscape insights to position product for investor pitches.</p></div>
+      <div class="solution"><h4>✅ What I Did</h4><p>• Researched 5+ major competitors<br>• Analyzed pricing, features, target audiences<br>• Collected and analyzed user reviews<br>• Created comparison report &amp; presentation deck</p></div>
+      <div class="results"><h4>📈 Results</h4><p><strong>3 growth opportunities</strong> identified • Clear investor talking points • <strong>Secured investor interest</strong> based on positioning</p></div>
+    </div>
+    <div class="work-visuals">
+      <div class="visual-label">Competitor Analysis Table</div>
+      <div class="visual-box"><svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="220" fill="#fff"/>
+        <rect width="460" height="38" fill="#1A3A52"/>
+        <text x="12" y="16" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)" letter-spacing="1">COMPETITIVE ANALYSIS REPORT</text>
+        <text x="12" y="30" font-family="sans-serif" font-size="12" fill="#fff" font-weight="600">AI Scheduling Tools — Market Landscape 2025</text>
+        <rect y="38" width="460" height="22" fill="#E8F4F8"/>
+        <text x="10" y="53" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700">TOOL</text>
+        <text x="90" y="53" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700">PRICE</text>
+        <text x="148" y="53" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700">KEY STRENGTH</text>
+        <text x="288" y="53" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700">WEAKNESS</text>
+        <text x="406" y="53" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700">RATING</text>
+        <rect y="60" width="460" height="28" fill="#fff"/>
+        <rect x="6" y="66" width="6" height="16" rx="2" fill="#4285F4"/>
+        <text x="18" y="76" font-family="sans-serif" font-size="8.5" fill="#333" font-weight="600">Motion</text><text x="18" y="85" font-family="sans-serif" font-size="7" fill="#888">AI-first</text>
+        <text x="90" y="77" font-family="sans-serif" font-size="8.5" fill="#555">$19/mo</text>
+        <text x="148" y="74" font-family="sans-serif" font-size="8" fill="#555">Auto task scheduling</text><text x="148" y="84" font-family="sans-serif" font-size="7" fill="#888">AI prioritization</text>
+        <text x="288" y="77" font-family="sans-serif" font-size="8" fill="#D32F2F">Steep learning curve</text>
+        <text x="406" y="77" font-family="sans-serif" font-size="9" fill="#F57C00">★★★★☆</text>
+        <rect y="88" width="460" height="28" fill="#f8f9fa"/>
+        <rect x="6" y="94" width="6" height="16" rx="2" fill="#34A853"/>
+        <text x="18" y="104" font-family="sans-serif" font-size="8.5" fill="#333" font-weight="600">Reclaim.ai</text><text x="18" y="113" font-family="sans-serif" font-size="7" fill="#888">Calendar defense</text>
+        <text x="90" y="105" font-family="sans-serif" font-size="8.5" fill="#555">$10/mo</text>
+        <text x="148" y="102" font-family="sans-serif" font-size="8" fill="#555">Habit + task defense</text><text x="148" y="112" font-family="sans-serif" font-size="7" fill="#888">Slack integration</text>
+        <text x="288" y="105" font-family="sans-serif" font-size="8" fill="#D32F2F">No mobile app</text>
+        <text x="406" y="105" font-family="sans-serif" font-size="9" fill="#F57C00">★★★☆☆</text>
+        <rect y="116" width="460" height="28" fill="#fff"/>
+        <rect x="6" y="122" width="6" height="16" rx="2" fill="#EA4335"/>
+        <text x="18" y="132" font-family="sans-serif" font-size="8.5" fill="#333" font-weight="600">Clockwise</text><text x="18" y="141" font-family="sans-serif" font-size="7" fill="#888">Team focus</text>
+        <text x="90" y="133" font-family="sans-serif" font-size="8.5" fill="#555">$6.75/mo</text>
+        <text x="148" y="130" font-family="sans-serif" font-size="8" fill="#555">Team sync blocks</text><text x="148" y="140" font-family="sans-serif" font-size="7" fill="#888">Analytics included</text>
+        <text x="288" y="133" font-family="sans-serif" font-size="8" fill="#D32F2F">Weak for solopreneurs</text>
+        <text x="406" y="133" font-family="sans-serif" font-size="9" fill="#F57C00">★★★★☆</text>
+        <rect y="144" width="460" height="28" fill="#f8f9fa"/>
+        <rect x="6" y="150" width="6" height="16" rx="2" fill="#9C27B0"/>
+        <text x="18" y="160" font-family="sans-serif" font-size="8.5" fill="#333" font-weight="600">Sunsama</text><text x="18" y="169" font-family="sans-serif" font-size="7" fill="#888">Daily planning</text>
+        <text x="90" y="161" font-family="sans-serif" font-size="8.5" fill="#555">$20/mo</text>
+        <text x="148" y="158" font-family="sans-serif" font-size="8" fill="#555">Daily shutdown ritual</text><text x="148" y="168" font-family="sans-serif" font-size="7" fill="#888">Multi-tool sync</text>
+        <text x="288" y="161" font-family="sans-serif" font-size="8" fill="#D32F2F">High price, no team</text>
+        <text x="406" y="161" font-family="sans-serif" font-size="9" fill="#F57C00">★★★★☆</text>
+        <rect y="172" width="460" height="28" fill="#fff"/>
+        <rect x="6" y="178" width="6" height="16" rx="2" fill="#FF6D00"/>
+        <text x="18" y="188" font-family="sans-serif" font-size="8.5" fill="#333" font-weight="600">SkedPal</text><text x="18" y="197" font-family="sans-serif" font-size="7" fill="#888">Priority scheduling</text>
+        <text x="90" y="189" font-family="sans-serif" font-size="8.5" fill="#555">$9.95/mo</text>
+        <text x="148" y="186" font-family="sans-serif" font-size="8" fill="#555">Time-map templates</text><text x="148" y="196" font-family="sans-serif" font-size="7" fill="#888">Flexible scheduling</text>
+        <text x="288" y="189" font-family="sans-serif" font-size="8" fill="#D32F2F">Dated UI, complex</text>
+        <text x="406" y="189" font-family="sans-serif" font-size="9" fill="#F57C00">★★★☆☆</text>
+        <rect y="200" width="460" height="20" fill="#1A3A52"/>
+        <text x="12" y="214" font-family="sans-serif" font-size="8.5" fill="#E8B96A" font-weight="600">3 key growth opportunities identified — Prepared by Remilekun Ayorinde, Executive VA</text>
+      </svg></div>
+      <div class="visual-label">Growth Opportunity Cards</div>
+      <div class="visual-box"><svg viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="160" fill="#fafafa"/>
+        <rect width="460" height="34" fill="#1B7D9F"/>
+        <text x="12" y="15" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.7)">INVESTOR BRIEF SLIDE</text>
+        <text x="12" y="29" font-family="sans-serif" font-size="12" fill="#fff" font-weight="700">3 Growth Opportunities to Win the Market</text>
+        <rect x="8" y="42" width="140" height="108" rx="5" fill="#E8F5E9"/>
+        <rect x="8" y="42" width="140" height="5" rx="3" fill="#27AE60"/>
+        <text x="78" y="62" font-family="sans-serif" font-size="9" fill="#1B5E20" font-weight="700" text-anchor="middle">01 / Mobile-First Gap</text>
+        <text x="78" y="78" font-family="sans-serif" font-size="8" fill="#388E3C" text-anchor="middle">No tool has strong mobile</text>
+        <text x="78" y="91" font-family="sans-serif" font-size="8" fill="#388E3C" text-anchor="middle">experience. Remote founders</text>
+        <text x="78" y="104" font-family="sans-serif" font-size="8" fill="#388E3C" text-anchor="middle">are underserved here.</text>
+        <rect x="8" y="130" width="140" height="16" rx="4" fill="#27AE60"/>
+        <text x="78" y="141" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="600">HIGH OPPORTUNITY</text>
+        <rect x="160" y="42" width="140" height="108" rx="5" fill="#FFF8E1"/>
+        <rect x="160" y="42" width="140" height="5" rx="3" fill="#F9A825"/>
+        <text x="230" y="62" font-family="sans-serif" font-size="9" fill="#E65100" font-weight="700" text-anchor="middle">02 / Solopreneur Gap</text>
+        <text x="230" y="78" font-family="sans-serif" font-size="8" fill="#EF6C00" text-anchor="middle">Every tool targets teams.</text>
+        <text x="230" y="91" font-family="sans-serif" font-size="8" fill="#EF6C00" text-anchor="middle">Solo founders with high</text>
+        <text x="230" y="104" font-family="sans-serif" font-size="8" fill="#EF6C00" text-anchor="middle">intent are left out.</text>
+        <rect x="160" y="130" width="140" height="16" rx="4" fill="#F9A825"/>
+        <text x="230" y="141" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="600">HIGH OPPORTUNITY</text>
+        <rect x="312" y="42" width="140" height="108" rx="5" fill="#EDE7F6"/>
+        <rect x="312" y="42" width="140" height="5" rx="3" fill="#7B1FA2"/>
+        <text x="382" y="62" font-family="sans-serif" font-size="9" fill="#4A148C" font-weight="700" text-anchor="middle">03 / VA Layer Gap</text>
+        <text x="382" y="78" font-family="sans-serif" font-size="8" fill="#6A1B9A" text-anchor="middle">No tool for VA + exec</text>
+        <text x="382" y="91" font-family="sans-serif" font-size="8" fill="#6A1B9A" text-anchor="middle">collaboration. Clear</text>
+        <text x="382" y="104" font-family="sans-serif" font-size="8" fill="#6A1B9A" text-anchor="middle">white space to own.</text>
+        <rect x="312" y="130" width="140" height="16" rx="4" fill="#7B1FA2"/>
+        <text x="382" y="141" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="600">UNTAPPED MARKET</text>
+      </svg></div>
+    </div>
+  </div>
+
+  <!-- 03 PROJECT MANAGEMENT -->
+  <div class="work-sample">
+    <div class="work-sample-header"><div class="work-sample-number">03</div><h3 class="work-sample-title">Project Management System</h3></div>
+    <div class="work-sample-body">
+      <div class="challenge"><h4>🎯 The Challenge</h4><p>Marketing team needed centralized system for content creation, approvals, and deadline tracking.</p></div>
+      <div class="solution"><h4>✅ What I Did</h4><p>• Built Trello/Asana board with pipeline stages<br>• Created task templates for workflows<br>• Set up automated reminders<br>• Established performance tracking &amp; SOPs</p></div>
+      <div class="results"><h4>📈 Results</h4><p><strong>70% reduction</strong> in missed deadlines • <strong>5 fewer hours/week</strong> on coordination • Clear project visibility</p></div>
+    </div>
+    <div class="work-visuals">
+      <div class="visual-label">Trello Pipeline Board</div>
+      <div class="visual-box"><svg viewBox="0 0 460 210" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="210" fill="#0052CC"/>
+        <rect width="460" height="36" fill="#0747A6"/>
+        <text x="12" y="15" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)">TRELLO BOARD</text>
+        <text x="12" y="28" font-family="sans-serif" font-size="11" fill="#fff" font-weight="600">Content Workflow — Marketing Team</text>
+        <rect x="6" y="42" width="104" height="162" rx="5" fill="rgba(255,255,255,.13)"/>
+        <text x="14" y="57" font-family="sans-serif" font-size="8.5" fill="#fff" font-weight="700">IDEAS</text>
+        <rect x="76" y="44" width="16" height="13" rx="6" fill="#FBBC04"/><text x="84" y="54" font-family="sans-serif" font-size="7" fill="#333" text-anchor="middle" font-weight="700">4</text>
+        <rect x="10" y="62" width="96" height="42" rx="4" fill="#fff"/><rect x="10" y="62" width="96" height="4" rx="2" fill="#9C27B0"/>
+        <text x="16" y="74" font-family="sans-serif" font-size="7" fill="#172B4D" font-weight="600">Blog: Productivity Tips</text>
+        <text x="16" y="84" font-family="sans-serif" font-size="7" fill="#172B4D">for Founders</text>
+        <text x="16" y="97" font-family="sans-serif" font-size="6.5" fill="#888">Sarah · Mar 10</text>
+        <rect x="10" y="110" width="96" height="40" rx="4" fill="#fff"/><rect x="10" y="110" width="96" height="4" rx="2" fill="#FF6D00"/>
+        <text x="16" y="122" font-family="sans-serif" font-size="7" fill="#172B4D" font-weight="600">LinkedIn Carousel:</text>
+        <text x="16" y="132" font-family="sans-serif" font-size="7" fill="#172B4D">Inbox Zero Method</text>
+        <text x="16" y="144" font-family="sans-serif" font-size="6.5" fill="#888">Mark · Mar 12</text>
+        <rect x="118" y="42" width="104" height="162" rx="5" fill="rgba(255,255,255,.13)"/>
+        <text x="126" y="57" font-family="sans-serif" font-size="8.5" fill="#fff" font-weight="700">IN PROGRESS</text>
+        <rect x="188" y="44" width="16" height="13" rx="6" fill="#1A73E8"/><text x="196" y="54" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+        <rect x="122" y="62" width="96" height="50" rx="4" fill="#fff"/><rect x="122" y="62" width="96" height="4" rx="2" fill="#1A73E8"/>
+        <text x="128" y="74" font-family="sans-serif" font-size="7" fill="#172B4D" font-weight="600">Case Study: Email</text>
+        <text x="128" y="84" font-family="sans-serif" font-size="7" fill="#172B4D">Management System</text>
+        <rect x="128" y="90" width="58" height="5" rx="2" fill="#e0e0e0"/><rect x="128" y="90" width="40" height="5" rx="2" fill="#34A853"/>
+        <text x="128" y="105" font-family="sans-serif" font-size="6.5" fill="#888">70% · Remi · Due Mar 8</text>
+        <rect x="122" y="118" width="96" height="46" rx="4" fill="#fff"/><rect x="122" y="118" width="96" height="4" rx="2" fill="#EA4335"/>
+        <text x="128" y="130" font-family="sans-serif" font-size="7" fill="#172B4D" font-weight="600">Social Graphics March</text>
+        <text x="128" y="140" font-family="sans-serif" font-size="7" fill="#172B4D">Batch (8 posts)</text>
+        <rect x="128" y="146" width="58" height="5" rx="2" fill="#e0e0e0"/><rect x="128" y="146" width="22" height="5" rx="2" fill="#FBBC04"/>
+        <text x="128" y="158" font-family="sans-serif" font-size="6.5" fill="#888">38% · Design · Mar 11</text>
+        <rect x="230" y="42" width="104" height="162" rx="5" fill="rgba(255,255,255,.13)"/>
+        <text x="238" y="57" font-family="sans-serif" font-size="8.5" fill="#fff" font-weight="700">REVIEW</text>
+        <rect x="298" y="44" width="16" height="13" rx="6" fill="#FF6D00"/><text x="306" y="54" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">2</text>
+        <rect x="234" y="62" width="96" height="50" rx="4" fill="#fff"/><rect x="234" y="62" width="96" height="4" rx="2" fill="#34A853"/>
+        <text x="240" y="74" font-family="sans-serif" font-size="7" fill="#172B4D" font-weight="600">Blog: Remote Work</text>
+        <text x="240" y="84" font-family="sans-serif" font-size="7" fill="#172B4D">Tools for 2025</text>
+        <rect x="240" y="92" width="48" height="13" rx="3" fill="#E8F5E9"/>
+        <text x="264" y="102" font-family="sans-serif" font-size="6.5" fill="#34A853" text-anchor="middle" font-weight="600">Copy Ready</text>
+        <text x="240" y="107" font-family="sans-serif" font-size="6.5" fill="#888">Editor review pending</text>
+        <rect x="342" y="42" width="112" height="162" rx="5" fill="rgba(255,255,255,.13)"/>
+        <text x="350" y="57" font-family="sans-serif" font-size="8.5" fill="#fff" font-weight="700">COMPLETE</text>
+        <rect x="420" y="44" width="16" height="13" rx="6" fill="#34A853"/><text x="428" y="54" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">5</text>
+        <rect x="346" y="62" width="104" height="38" rx="4" fill="rgba(255,255,255,.75)"/>
+        <text x="352" y="75" font-family="sans-serif" font-size="7" fill="#555" font-weight="600">Feb Newsletter</text>
+        <text x="352" y="85" font-family="sans-serif" font-size="7" fill="#777">Delivered Feb 28</text>
+        <text x="352" y="95" font-family="sans-serif" font-size="6.5" fill="#999">2,847 sent · 42% open</text>
+        <rect x="346" y="106" width="104" height="36" rx="4" fill="rgba(255,255,255,.75)"/>
+        <text x="352" y="119" font-family="sans-serif" font-size="7" fill="#555" font-weight="600">Q4 Case Studies (3)</text>
+        <text x="352" y="129" font-family="sans-serif" font-size="7" fill="#777">Published Feb 22</text>
+        <text x="352" y="139" font-family="sans-serif" font-size="6.5" fill="#999">1.2k views total</text>
+      </svg></div>
+      <div class="visual-label">SOP Workflow Steps</div>
+      <div class="visual-box"><svg viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="150" fill="#fff"/>
+        <rect width="460" height="34" fill="#1A3A52"/>
+        <text x="12" y="15" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)" letter-spacing="1">SOP DOCUMENT</text>
+        <text x="12" y="28" font-family="sans-serif" font-size="11" fill="#fff" font-weight="600">Content Creation — Standard Operating Procedure</text>
+        <rect x="8" y="42" width="76" height="60" rx="5" fill="#E3F2FD"/>
+        <text x="46" y="68" font-family="sans-serif" font-size="18" text-anchor="middle">💡</text>
+        <text x="46" y="84" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700" text-anchor="middle">IDEATION</text>
+        <text x="46" y="95" font-family="sans-serif" font-size="7" fill="#5A6C7D" text-anchor="middle">Submit brief</text>
+        <text x="90" y="74" font-family="sans-serif" font-size="14" fill="#1B7D9F" text-anchor="middle">→</text>
+        <rect x="96" y="42" width="76" height="60" rx="5" fill="#FFF8E1"/>
+        <text x="134" y="68" font-family="sans-serif" font-size="18" text-anchor="middle">✍️</text>
+        <text x="134" y="84" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700" text-anchor="middle">CREATION</text>
+        <text x="134" y="95" font-family="sans-serif" font-size="7" fill="#5A6C7D" text-anchor="middle">Write + design</text>
+        <text x="178" y="74" font-family="sans-serif" font-size="14" fill="#1B7D9F" text-anchor="middle">→</text>
+        <rect x="184" y="42" width="76" height="60" rx="5" fill="#EDE7F6"/>
+        <text x="222" y="68" font-family="sans-serif" font-size="18" text-anchor="middle">👁️</text>
+        <text x="222" y="84" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700" text-anchor="middle">REVIEW</text>
+        <text x="222" y="95" font-family="sans-serif" font-size="7" fill="#5A6C7D" text-anchor="middle">Editor approves</text>
+        <text x="266" y="74" font-family="sans-serif" font-size="14" fill="#1B7D9F" text-anchor="middle">→</text>
+        <rect x="272" y="42" width="76" height="60" rx="5" fill="#E8F5E9"/>
+        <text x="310" y="68" font-family="sans-serif" font-size="18" text-anchor="middle">✅</text>
+        <text x="310" y="84" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700" text-anchor="middle">PUBLISH</text>
+        <text x="310" y="95" font-family="sans-serif" font-size="7" fill="#5A6C7D" text-anchor="middle">Schedule + go</text>
+        <text x="354" y="74" font-family="sans-serif" font-size="14" fill="#1B7D9F" text-anchor="middle">→</text>
+        <rect x="360" y="42" width="92" height="60" rx="5" fill="#FFEBEE"/>
+        <text x="406" y="68" font-family="sans-serif" font-size="18" text-anchor="middle">📊</text>
+        <text x="406" y="84" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700" text-anchor="middle">TRACK</text>
+        <text x="406" y="95" font-family="sans-serif" font-size="7" fill="#5A6C7D" text-anchor="middle">Record metrics</text>
+        <rect y="112" width="460" height="38" fill="#f8f9fa"/>
+        <text x="12" y="128" font-family="sans-serif" font-size="8" fill="#1A3A52" font-weight="700">AUTOMATIONS: </text>
+        <text x="92" y="128" font-family="sans-serif" font-size="8" fill="#2C3E50">48hr deadline auto-reminder · Task templates auto-load · Approval gate before publish</text>
+        <text x="12" y="144" font-family="sans-serif" font-size="8" fill="#27AE60" font-weight="600">Result: 70% fewer missed deadlines · 5hrs/week saved · Full leadership visibility</text>
+      </svg></div>
+    </div>
+  </div>
+  <!-- 04 EXPENSE TRACKING -->
+  <div class="work-sample">
+    <div class="work-sample-header"><div class="work-sample-number">04</div><h3 class="work-sample-title">Expense Tracking &amp; Organization</h3></div>
+    <div class="work-sample-body">
+      <div class="challenge"><h4>🎯 The Challenge</h4><p>Unorganized expense tracking causing delays, inaccuracies, and lack of visibility.</p></div>
+      <div class="solution"><h4>✅ What I Did</h4><p>• Created master expense tracker with categorization<br>• Established receipt documentation requirements<br>• Set up approval workflow &amp; status tracking<br>• Created monthly summary reports</p></div>
+      <div class="results"><h4>📈 Results</h4><p><strong>100% expense tracking</strong> with receipts • Reimbursement time <strong>2 weeks → 3 days</strong> • Clear budget planning</p></div>
+    </div>
+    <div class="work-visuals">
+      <div class="visual-label">Google Sheets Expense Tracker</div>
+      <div class="visual-box"><svg viewBox="0 0 460 215" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="215" fill="#fff"/>
+        <rect width="460" height="34" fill="#0F9D58"/>
+        <text x="12" y="14" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.7)" letter-spacing="1">GOOGLE SHEETS</text>
+        <text x="12" y="27" font-family="sans-serif" font-size="11" fill="#fff" font-weight="600">Business Expense Tracker — Q1 2025</text>
+        <rect y="34" width="460" height="50" fill="#f8fdf9"/>
+        <rect x="6" y="40" width="100" height="38" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="14" y="54" font-family="sans-serif" font-size="7" fill="#888">TOTAL EXPENSES</text>
+        <text x="14" y="70" font-family="sans-serif" font-size="15" fill="#0F9D58" font-weight="700">$8,420</text>
+        <rect x="114" y="40" width="100" height="38" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="122" y="54" font-family="sans-serif" font-size="7" fill="#888">PENDING</text>
+        <text x="122" y="70" font-family="sans-serif" font-size="15" fill="#F57C00" font-weight="700">$1,240</text>
+        <rect x="222" y="40" width="100" height="38" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="230" y="54" font-family="sans-serif" font-size="7" fill="#888">REIMBURSED</text>
+        <text x="230" y="70" font-family="sans-serif" font-size="15" fill="#1A73E8" font-weight="700">$6,890</text>
+        <rect x="330" y="40" width="124" height="38" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="338" y="54" font-family="sans-serif" font-size="7" fill="#888">REMAINING</text>
+        <text x="338" y="70" font-family="sans-serif" font-size="15" fill="#34A853" font-weight="700">$3,580</text>
+        <rect y="84" width="460" height="20" fill="#E8F5E9"/>
+        <text x="8" y="97" font-family="sans-serif" font-size="7.5" fill="#1B5E20" font-weight="700">DATE</text>
+        <text x="50" y="97" font-family="sans-serif" font-size="7.5" fill="#1B5E20" font-weight="700">DESCRIPTION</text>
+        <text x="210" y="97" font-family="sans-serif" font-size="7.5" fill="#1B5E20" font-weight="700">CATEGORY</text>
+        <text x="278" y="97" font-family="sans-serif" font-size="7.5" fill="#1B5E20" font-weight="700">AMOUNT</text>
+        <text x="334" y="97" font-family="sans-serif" font-size="7.5" fill="#1B5E20" font-weight="700">RECEIPT</text>
+        <text x="382" y="97" font-family="sans-serif" font-size="7.5" fill="#1B5E20" font-weight="700">STATUS</text>
+        <rect y="104" width="460" height="22" fill="#fff"/>
+        <text x="8" y="118" font-family="sans-serif" font-size="8" fill="#333">Mar 6</text>
+        <text x="50" y="115" font-family="sans-serif" font-size="7.5" fill="#333">Flight NYC to London</text><text x="50" y="124" font-family="sans-serif" font-size="7" fill="#888">Business class · Approved</text>
+        <rect x="210" y="107" width="52" height="13" rx="3" fill="#E3F2FD"/><text x="236" y="117" font-family="sans-serif" font-size="7" fill="#1A73E8" text-anchor="middle">Travel</text>
+        <text x="278" y="118" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$842.00</text>
+        <rect x="334" y="107" width="36" height="13" rx="3" fill="#E8F5E9"/><text x="352" y="117" font-family="sans-serif" font-size="7" fill="#34A853" text-anchor="middle">PDF ✓</text>
+        <rect x="382" y="107" width="70" height="13" rx="3" fill="#E8F5E9"/><text x="417" y="117" font-family="sans-serif" font-size="7" fill="#0F9D58" text-anchor="middle">Reimbursed</text>
+        <rect y="126" width="460" height="22" fill="#f8fdf9"/>
+        <text x="8" y="140" font-family="sans-serif" font-size="8" fill="#333">Mar 5</text>
+        <text x="50" y="137" font-family="sans-serif" font-size="7.5" fill="#333">Team Lunch (8 ppl)</text><text x="50" y="146" font-family="sans-serif" font-size="7" fill="#888">Nobu Restaurant</text>
+        <rect x="210" y="129" width="48" height="13" rx="3" fill="#FFF8E1"/><text x="234" y="139" font-family="sans-serif" font-size="7" fill="#F57C00" text-anchor="middle">Meals</text>
+        <text x="278" y="140" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$186.50</text>
+        <rect x="334" y="129" width="36" height="13" rx="3" fill="#E8F5E9"/><text x="352" y="139" font-family="sans-serif" font-size="7" fill="#34A853" text-anchor="middle">JPG ✓</text>
+        <rect x="382" y="129" width="70" height="13" rx="3" fill="#E8F5E9"/><text x="417" y="139" font-family="sans-serif" font-size="7" fill="#0F9D58" text-anchor="middle">Reimbursed</text>
+        <rect y="148" width="460" height="22" fill="#fff"/>
+        <text x="8" y="162" font-family="sans-serif" font-size="8" fill="#333">Mar 4</text>
+        <text x="50" y="159" font-family="sans-serif" font-size="7.5" fill="#333">Asana Annual License</text><text x="50" y="168" font-family="sans-serif" font-size="7" fill="#888">10 seats · Team</text>
+        <rect x="210" y="151" width="56" height="13" rx="3" fill="#EDE7F6"/><text x="238" y="161" font-family="sans-serif" font-size="7" fill="#7B1FA2" text-anchor="middle">Software</text>
+        <text x="278" y="162" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$299.00</text>
+        <rect x="334" y="151" width="36" height="13" rx="3" fill="#E8F5E9"/><text x="352" y="161" font-family="sans-serif" font-size="7" fill="#34A853" text-anchor="middle">PDF ✓</text>
+        <rect x="382" y="151" width="58" height="13" rx="3" fill="#FFF3E0"/><text x="411" y="161" font-family="sans-serif" font-size="7" fill="#F57C00" text-anchor="middle">Pending</text>
+        <rect y="170" width="460" height="22" fill="#f8fdf9"/>
+        <text x="8" y="184" font-family="sans-serif" font-size="8" fill="#333">Mar 2</text>
+        <text x="50" y="181" font-family="sans-serif" font-size="7.5" fill="#333">Hotel — Chicago Conf (3 nights)</text><text x="50" y="190" font-family="sans-serif" font-size="7" fill="#888">Marriott Downtown</text>
+        <rect x="210" y="173" width="52" height="13" rx="3" fill="#E3F2FD"/><text x="236" y="183" font-family="sans-serif" font-size="7" fill="#1A73E8" text-anchor="middle">Travel</text>
+        <text x="278" y="184" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$648.00</text>
+        <rect x="334" y="173" width="42" height="13" rx="3" fill="#FFEBEE"/><text x="355" y="183" font-family="sans-serif" font-size="7" fill="#D32F2F" text-anchor="middle">Missing ⚠</text>
+        <rect x="382" y="173" width="56" height="13" rx="3" fill="#FFEBEE"/><text x="410" y="183" font-family="sans-serif" font-size="7" fill="#D32F2F" text-anchor="middle">On Hold</text>
+        <rect y="192" width="460" height="23" fill="#0F9D58" opacity="0.1"/>
+        <text x="12" y="207" font-family="sans-serif" font-size="8" fill="#0F9D58" font-weight="600">100% expenses tracked · Avg reimbursement 3 days · Zero disputed items</text>
+      </svg></div>
+      <div class="visual-label">Monthly Category Spend Report</div>
+      <div class="visual-box"><svg viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="160" fill="#fff"/>
+        <rect width="460" height="32" fill="#1A3A52"/>
+        <text x="12" y="14" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)">MONTHLY SUMMARY REPORT</text>
+        <text x="12" y="26" font-family="sans-serif" font-size="11" fill="#fff" font-weight="600">Q1 2025 — Expense Breakdown by Category</text>
+        <text x="12" y="52" font-family="sans-serif" font-size="8.5" fill="#1A3A52" font-weight="600">Travel</text>
+        <rect x="64" y="41" width="228" height="15" rx="3" fill="#1A73E8" opacity=".85"/>
+        <text x="298" y="52" font-family="sans-serif" font-size="8" fill="#333">$2,840 (34%)</text>
+        <text x="12" y="74" font-family="sans-serif" font-size="8.5" fill="#1A3A52" font-weight="600">Software</text>
+        <rect x="64" y="63" width="142" height="15" rx="3" fill="#9C27B0" opacity=".85"/>
+        <text x="212" y="74" font-family="sans-serif" font-size="8" fill="#333">$1,760 (21%)</text>
+        <text x="12" y="96" font-family="sans-serif" font-size="8.5" fill="#1A3A52" font-weight="600">Meals</text>
+        <rect x="64" y="85" width="114" height="15" rx="3" fill="#0F9D58" opacity=".85"/>
+        <text x="184" y="96" font-family="sans-serif" font-size="8" fill="#333">$1,420 (17%)</text>
+        <text x="12" y="118" font-family="sans-serif" font-size="8.5" fill="#1A3A52" font-weight="600">Office</text>
+        <rect x="64" y="107" width="80" height="15" rx="3" fill="#F57C00" opacity=".85"/>
+        <text x="150" y="118" font-family="sans-serif" font-size="8" fill="#333">$840 (10%)</text>
+        <text x="12" y="140" font-family="sans-serif" font-size="8.5" fill="#1A3A52" font-weight="600">Other</text>
+        <rect x="64" y="129" width="122" height="15" rx="3" fill="#607D8B" opacity=".85"/>
+        <text x="192" y="140" font-family="sans-serif" font-size="8" fill="#333">$1,560 (18%)</text>
+        <rect x="330" y="38" width="124" height="116" rx="5" fill="#E8F5E9"/>
+        <text x="392" y="56" font-family="sans-serif" font-size="8" fill="#1B5E20" font-weight="700" text-anchor="middle">KEY WINS</text>
+        <text x="344" y="72" font-family="sans-serif" font-size="8" fill="#2E7D32">✓ 100% documented</text>
+        <text x="344" y="88" font-family="sans-serif" font-size="8" fill="#2E7D32">✓ 3-day avg payout</text>
+        <text x="344" y="104" font-family="sans-serif" font-size="8" fill="#2E7D32">✓ Zero disputes</text>
+        <text x="344" y="120" font-family="sans-serif" font-size="8" fill="#2E7D32">✓ Auto monthly rpt</text>
+        <text x="344" y="136" font-family="sans-serif" font-size="8" fill="#2E7D32">✓ Real-time budget</text>
+        <text x="344" y="148" font-family="sans-serif" font-size="7" fill="#888" font-style="italic">By R. Ayorinde, VA</text>
+      </svg></div>
+    </div>
+  </div>
+
+  <!-- 05 EMAIL MANAGEMENT -->
+  <div class="work-sample">
+    <div class="work-sample-header"><div class="work-sample-number">05</div><h3 class="work-sample-title">Email Management System</h3></div>
+    <div class="work-sample-body">
+      <div class="challenge"><h4>🎯 The Challenge</h4><p>Executive drowning in 100+ daily emails with no prioritization or follow-up system.</p></div>
+      <div class="solution"><h4>✅ What I Did</h4><p>• Set up Gmail labels, filters &amp; priority system<br>• Created email response templates<br>• Implemented action tracking system<br>• Established daily inbox review protocol</p></div>
+      <div class="results"><h4>📈 Results</h4><p>Response time <strong>48 hours → 3 hours</strong> • <strong>Zero missed</strong> critical emails • <strong>3 hours/day</strong> freed up</p></div>
+    </div>
+    <div class="work-visuals">
+      <div class="visual-label">Gmail Priority Label System</div>
+      <div class="visual-box"><svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="220" fill="#f6f8fc"/>
+        <rect width="144" height="220" fill="#fff"/>
+        <text x="14" y="24" font-family="sans-serif" font-size="15" font-weight="700"><tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">m</tspan><tspan fill="#FBBC04">a</tspan><tspan fill="#34A853">i</tspan><tspan fill="#4285F4">l</tspan></text>
+        <rect x="8" y="32" width="122" height="24" rx="12" fill="#C2E7FF"/>
+        <text x="24" y="47" font-family="sans-serif" font-size="9.5" fill="#001D35" font-weight="600">✏ Compose</text>
+        <text x="14" y="74" font-family="sans-serif" font-size="9" fill="#333" font-weight="600">📥 Inbox</text>
+        <rect x="118" y="64" width="18" height="13" rx="6" fill="#D32F2F"/><text x="127" y="74" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle" font-weight="700">12</text>
+        <text x="14" y="92" font-family="sans-serif" font-size="8.5" fill="#666">⭐ Starred</text>
+        <text x="14" y="108" font-family="sans-serif" font-size="8.5" fill="#666">📤 Sent</text>
+        <line x1="8" y1="118" x2="136" y2="118" stroke="#e0e0e0"/>
+        <text x="8" y="132" font-family="sans-serif" font-size="7" fill="#888" letter-spacing="1">LABELS</text>
+        <rect x="8" y="138" width="9" height="9" rx="2" fill="#D32F2F"/>
+        <text x="22" y="147" font-family="sans-serif" font-size="8" fill="#333">Action Required</text>
+        <rect x="118" y="137" width="18" height="12" rx="6" fill="#D32F2F"/><text x="127" y="146" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle">5</text>
+        <rect x="8" y="154" width="9" height="9" rx="2" fill="#F57C00"/>
+        <text x="22" y="163" font-family="sans-serif" font-size="8" fill="#333">Awaiting Reply</text>
+        <rect x="118" y="153" width="18" height="12" rx="6" fill="#F57C00"/><text x="127" y="162" font-family="sans-serif" font-size="7" fill="#fff" text-anchor="middle">8</text>
+        <rect x="8" y="170" width="9" height="9" rx="2" fill="#1A73E8"/>
+        <text x="22" y="179" font-family="sans-serif" font-size="8" fill="#333">Clients</text>
+        <rect x="8" y="186" width="9" height="9" rx="2" fill="#34A853"/>
+        <text x="22" y="195" font-family="sans-serif" font-size="8" fill="#333">Newsletters</text>
+        <rect x="8" y="202" width="9" height="9" rx="2" fill="#9C27B0"/>
+        <text x="22" y="211" font-family="sans-serif" font-size="8" fill="#333">Finance</text>
+        <rect x="152" y="8" width="300" height="24" rx="12" fill="#eaf1fb"/>
+        <text x="168" y="23" font-family="sans-serif" font-size="9" fill="#888">🔍  Search mail</text>
+        <rect x="144" y="40" width="316" height="22" fill="#fff" stroke="#e0e0e0" stroke-width=".5"/>
+        <text x="164" y="55" font-family="sans-serif" font-size="8.5" fill="#1A73E8" font-weight="600">Primary</text>
+        <line x1="152" y1="62" x2="210" y2="62" stroke="#1A73E8" stroke-width="2"/>
+        <text x="248" y="55" font-family="sans-serif" font-size="8.5" fill="#666">Promotions</text>
+        <text x="352" y="55" font-family="sans-serif" font-size="8.5" fill="#666">Updates</text>
+        <rect x="144" y="62" width="316" height="38" fill="#fff"/>
+        <rect x="144" y="62" width="3" height="38" fill="#D32F2F"/>
+        <text x="154" y="78" font-family="sans-serif" font-size="8.5" fill="#172B4D" font-weight="700">Alex Chen (CEO)</text>
+        <text x="154" y="90" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">Q2 Investor Meeting — prep materials needed by Friday</text>
+        <rect x="368" y="68" width="88" height="12" rx="3" fill="#FFEBEE"/>
+        <text x="412" y="77" font-family="sans-serif" font-size="7" fill="#D32F2F" text-anchor="middle" font-weight="600">ACTION NEEDED</text>
+        <line x1="144" y1="100" x2="460" y2="100" stroke="#f1f3f4"/>
+        <rect x="144" y="100" width="316" height="38" fill="#fff"/>
+        <rect x="144" y="100" width="3" height="38" fill="#1A73E8"/>
+        <text x="154" y="116" font-family="sans-serif" font-size="8.5" fill="#172B4D" font-weight="700">Sarah Williams</text>
+        <text x="154" y="128" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">Contract renewal — Proposal attached for review</text>
+        <rect x="388" y="106" width="52" height="12" rx="3" fill="#E3F2FD"/>
+        <text x="414" y="115" font-family="sans-serif" font-size="7" fill="#1A73E8" text-anchor="middle" font-weight="600">CLIENT</text>
+        <line x1="144" y1="138" x2="460" y2="138" stroke="#f1f3f4"/>
+        <rect x="144" y="138" width="316" height="38" fill="#f8f9fa"/>
+        <text x="154" y="154" font-family="sans-serif" font-size="8.5" fill="#555">Marcus Thompson</text>
+        <text x="154" y="166" font-family="sans-serif" font-size="8" fill="#666">Re: Partnership — Following up on our call last week</text>
+        <rect x="374" y="144" width="78" height="12" rx="3" fill="#FFF3E0"/>
+        <text x="413" y="153" font-family="sans-serif" font-size="7" fill="#F57C00" text-anchor="middle" font-weight="600">AWAITING REPLY</text>
+        <rect x="144" y="182" width="316" height="38" fill="#fff" stroke="#e0e0e0" stroke-width=".5"/>
+        <text x="154" y="197" font-family="sans-serif" font-size="7.5" fill="#333" font-weight="600">Today's Dashboard</text>
+        <rect x="154" y="201" width="62" height="14" rx="3" fill="#FFEBEE"/><text x="185" y="211" font-family="sans-serif" font-size="7" fill="#D32F2F" text-anchor="middle">5 Action Needed</text>
+        <rect x="222" y="201" width="62" height="14" rx="3" fill="#FFF3E0"/><text x="253" y="211" font-family="sans-serif" font-size="7" fill="#F57C00" text-anchor="middle">8 Awaiting Reply</text>
+        <rect x="290" y="201" width="62" height="14" rx="3" fill="#E8F5E9"/><text x="321" y="211" font-family="sans-serif" font-size="7" fill="#34A853" text-anchor="middle">47 Cleared</text>
+        <rect x="358" y="201" width="80" height="14" rx="3" fill="#E3F2FD"/><text x="398" y="211" font-family="sans-serif" font-size="7" fill="#1A73E8" text-anchor="middle">0 Missed Critical</text>
+      </svg></div>
+      <div class="visual-label">Before vs After Performance</div>
+      <div class="visual-box"><svg viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="150" fill="#fff"/>
+        <rect width="460" height="32" fill="#1A3A52"/>
+        <text x="12" y="14" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)">PERFORMANCE REPORT</text>
+        <text x="12" y="26" font-family="sans-serif" font-size="11" fill="#fff" font-weight="600">Email Management — Before vs After</text>
+        <rect x="8" y="40" width="206" height="102" rx="5" fill="#FFEBEE"/>
+        <text x="111" y="58" font-family="sans-serif" font-size="9" fill="#C62828" font-weight="700" text-anchor="middle">BEFORE</text>
+        <text x="111" y="78" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">48hrs response time</text>
+        <text x="111" y="94" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">100+ unread daily</text>
+        <text x="111" y="110" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">Critical emails missed</text>
+        <text x="111" y="126" font-family="sans-serif" font-size="11" fill="#C62828" text-anchor="middle">3hrs/day in inbox</text>
+        <text x="232" y="96" font-family="sans-serif" font-size="26" fill="#1B7D9F" text-anchor="middle">→</text>
+        <rect x="246" y="40" width="206" height="102" rx="5" fill="#E8F5E9"/>
+        <text x="349" y="58" font-family="sans-serif" font-size="9" fill="#1B5E20" font-weight="700" text-anchor="middle">AFTER</text>
+        <text x="349" y="78" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">3hrs response time</text>
+        <text x="349" y="94" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">Inbox zero daily</text>
+        <text x="349" y="110" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">0 missed critical</text>
+        <text x="349" y="126" font-family="sans-serif" font-size="11" fill="#27AE60" text-anchor="middle">3hrs/day freed up</text>
+      </svg></div>
+    </div>
+  </div>
+
+  <!-- 06 CRM -->
+  <div class="work-sample">
+    <div class="work-sample-header"><div class="work-sample-number">06</div><h3 class="work-sample-title">Client Relationship Management</h3></div>
+    <div class="work-sample-body">
+      <div class="challenge"><h4>🎯 The Challenge</h4><p>Multiple clients with different preferences; difficult to maintain relationships and identify at-risk accounts.</p></div>
+      <div class="solution"><h4>✅ What I Did</h4><p>• Built CRM dashboard tracking status &amp; contact dates<br>• Created automated follow-up sequences<br>• Set up relationship check-in reminders<br>• Maintained organized contact info &amp; history</p></div>
+      <div class="results"><h4>📈 Results</h4><p><strong>100% client contact</strong> on schedule • Identified <strong>3 at-risk</strong> clients early • <strong>35% engagement</strong> improvement</p></div>
+    </div>
+    <div class="work-visuals">
+      <div class="visual-label">Airtable CRM Dashboard</div>
+      <div class="visual-box"><svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="220" fill="#f7f7f7"/>
+        <rect width="460" height="36" fill="#FCB400"/>
+        <text x="12" y="16" font-family="sans-serif" font-size="8" fill="rgba(0,0,0,.5)" letter-spacing="1">AIRTABLE CRM</text>
+        <text x="12" y="30" font-family="sans-serif" font-size="12" fill="#1a1a1a" font-weight="700">Client Relationship Dashboard</text>
+        <rect y="36" width="460" height="24" fill="#fff" stroke="#e0e0e0" stroke-width=".5"/>
+        <rect y="36" width="86" height="24" fill="#FCB400" opacity=".15"/>
+        <text x="43" y="52" font-family="sans-serif" font-size="8.5" fill="#996800" text-anchor="middle" font-weight="700">Grid View</text>
+        <text x="140" y="52" font-family="sans-serif" font-size="8.5" fill="#888" text-anchor="middle">Kanban</text>
+        <text x="220" y="52" font-family="sans-serif" font-size="8.5" fill="#888" text-anchor="middle">Calendar</text>
+        <rect y="60" width="460" height="22" fill="#f2f2f2"/>
+        <text x="28" y="74" font-family="sans-serif" font-size="7.5" fill="#555" font-weight="700">CLIENT</text>
+        <text x="130" y="74" font-family="sans-serif" font-size="7.5" fill="#555" font-weight="700">COMPANY</text>
+        <text x="214" y="74" font-family="sans-serif" font-size="7.5" fill="#555" font-weight="700">STATUS</text>
+        <text x="284" y="74" font-family="sans-serif" font-size="7.5" fill="#555" font-weight="700">LAST CONTACT</text>
+        <text x="374" y="74" font-family="sans-serif" font-size="7.5" fill="#555" font-weight="700">HEALTH</text>
+        <text x="424" y="74" font-family="sans-serif" font-size="7.5" fill="#555" font-weight="700">VALUE</text>
+        <rect y="82" width="460" height="28" fill="#fff"/>
+        <rect x="4" y="88" width="18" height="18" rx="9" fill="#1A73E8"/><text x="13" y="100" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700">AC</text>
+        <text x="28" y="97" font-family="sans-serif" font-size="8" fill="#172B4D" font-weight="600">Alex Chen</text><text x="28" y="107" font-family="sans-serif" font-size="7" fill="#888">alex@techcorp.io</text>
+        <text x="130" y="97" font-family="sans-serif" font-size="8" fill="#555">TechCorp Inc.</text>
+        <rect x="214" y="85" width="54" height="14" rx="7" fill="#E8F5E9"/><text x="241" y="95" font-family="sans-serif" font-size="7.5" fill="#34A853" text-anchor="middle" font-weight="600">Active</text>
+        <text x="284" y="97" font-family="sans-serif" font-size="7.5" fill="#555">Today 9:14 AM</text>
+        <text x="374" y="97" font-family="sans-serif" font-size="10" fill="#34A853">●●●●●</text>
+        <text x="424" y="97" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$4,200</text>
+        <rect y="110" width="460" height="28" fill="#fffde7"/>
+        <rect y="110" width="3" height="28" fill="#F57C00"/>
+        <rect x="4" y="116" width="18" height="18" rx="9" fill="#F57C00"/><text x="13" y="128" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700">SW</text>
+        <text x="28" y="125" font-family="sans-serif" font-size="8" fill="#172B4D" font-weight="600">Sarah Williams</text><text x="28" y="135" font-family="sans-serif" font-size="7" fill="#888">sarah@growthco.com</text>
+        <text x="130" y="125" font-family="sans-serif" font-size="8" fill="#555">GrowthCo</text>
+        <rect x="214" y="113" width="62" height="14" rx="7" fill="#FFF3E0"/><text x="245" y="123" font-family="sans-serif" font-size="7.5" fill="#F57C00" text-anchor="middle" font-weight="600">At Risk</text>
+        <text x="284" y="123" font-family="sans-serif" font-size="7.5" fill="#D32F2F" font-weight="600">18 days ago</text>
+        <text x="374" y="125" font-family="sans-serif" font-size="10" fill="#F57C00">●●●○○</text>
+        <text x="424" y="125" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$2,800</text>
+        <rect y="138" width="460" height="28" fill="#fff"/>
+        <rect x="4" y="144" width="18" height="18" rx="9" fill="#9C27B0"/><text x="13" y="156" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700">MT</text>
+        <text x="28" y="153" font-family="sans-serif" font-size="8" fill="#172B4D" font-weight="600">Marcus Thompson</text><text x="28" y="163" font-family="sans-serif" font-size="7" fill="#888">m@studio.co</text>
+        <text x="130" y="153" font-family="sans-serif" font-size="8" fill="#555">Studio Creative</text>
+        <rect x="214" y="141" width="54" height="14" rx="7" fill="#E8F5E9"/><text x="241" y="151" font-family="sans-serif" font-size="7.5" fill="#34A853" text-anchor="middle" font-weight="600">Active</text>
+        <text x="284" y="153" font-family="sans-serif" font-size="7.5" fill="#555">2 days ago</text>
+        <text x="374" y="153" font-family="sans-serif" font-size="10" fill="#34A853">●●●●○</text>
+        <text x="424" y="153" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$1,900</text>
+        <rect y="166" width="460" height="28" fill="#fce4ec"/>
+        <rect y="166" width="3" height="28" fill="#D32F2F"/>
+        <rect x="4" y="172" width="18" height="18" rx="9" fill="#D32F2F"/><text x="13" y="184" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="700">LK</text>
+        <text x="28" y="181" font-family="sans-serif" font-size="8" fill="#172B4D" font-weight="600">Linda Kim</text><text x="28" y="191" font-family="sans-serif" font-size="7" fill="#888">linda@primefund.com</text>
+        <text x="130" y="181" font-family="sans-serif" font-size="8" fill="#555">Prime Fund</text>
+        <rect x="214" y="169" width="64" height="14" rx="7" fill="#FFEBEE"/><text x="246" y="179" font-family="sans-serif" font-size="7.5" fill="#D32F2F" text-anchor="middle" font-weight="600">Disengaged</text>
+        <text x="284" y="179" font-family="sans-serif" font-size="7.5" fill="#D32F2F" font-weight="600">31 days ago!</text>
+        <text x="374" y="181" font-family="sans-serif" font-size="10" fill="#D32F2F">●○○○○</text>
+        <text x="424" y="181" font-family="sans-serif" font-size="8" fill="#333" font-weight="600">$5,100</text>
+        <rect y="194" width="460" height="26" fill="#FCB400" opacity=".12"/>
+        <text x="12" y="210" font-family="sans-serif" font-size="8" fill="#996800" font-weight="600">100% clients contacted on schedule · 3 at-risk flagged early · 35% engagement improvement</text>
+      </svg></div>
+      <div class="visual-label">Follow-Up Sequence &amp; Health Summary</div>
+      <div class="visual-box"><svg viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="460" height="160" fill="#fff"/>
+        <rect width="460" height="32" fill="#1A3A52"/>
+        <text x="12" y="14" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,.6)">CRM FOLLOW-UP SYSTEM</text>
+        <text x="12" y="26" font-family="sans-serif" font-size="11" fill="#fff" font-weight="600">Automated Follow-Up Sequence + Client Health Overview</text>
+        <rect x="8" y="38" width="204" height="114" rx="5" fill="#f8f9fa" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="110" y="54" font-family="sans-serif" font-size="8.5" fill="#1A3A52" font-weight="700" text-anchor="middle">FOLLOW-UP SEQUENCE</text>
+        <rect x="16" y="60" width="188" height="16" rx="3" fill="#E3F2FD"/>
+        <text x="110" y="71" font-family="sans-serif" font-size="7.5" fill="#1A73E8" text-anchor="middle" font-weight="600">Day 1 — Welcome email + onboarding doc</text>
+        <rect x="16" y="81" width="188" height="16" rx="3" fill="#E8F5E9"/>
+        <text x="110" y="92" font-family="sans-serif" font-size="7.5" fill="#34A853" text-anchor="middle" font-weight="600">Day 7 — Check-in call scheduled</text>
+        <rect x="16" y="102" width="188" height="16" rx="3" fill="#FFF8E1"/>
+        <text x="110" y="113" font-family="sans-serif" font-size="7.5" fill="#F57C00" text-anchor="middle" font-weight="600">Day 14 — Progress update + next steps</text>
+        <rect x="16" y="123" width="188" height="16" rx="3" fill="#EDE7F6"/>
+        <text x="110" y="134" font-family="sans-serif" font-size="7.5" fill="#7B1FA2" text-anchor="middle" font-weight="600">Day 30 — Monthly review + renewal talk</text>
+        <rect x="220" y="38" width="232" height="114" rx="5" fill="#f8f9fa" stroke="#e0e0e0" stroke-width="1"/>
+        <text x="336" y="54" font-family="sans-serif" font-size="8.5" fill="#1A3A52" font-weight="700" text-anchor="middle">HEALTH OVERVIEW</text>
+        <rect x="228" y="60" width="50" height="50" rx="4" fill="#E8F5E9"/>
+        <text x="253" y="82" font-family="sans-serif" font-size="18" fill="#34A853" font-weight="700" text-anchor="middle">5</text>
+        <text x="253" y="104" font-family="sans-serif" font-size="7" fill="#2E7D32" text-anchor="middle">Active</text>
+        <rect x="284" y="60" width="50" height="50" rx="4" fill="#FFF3E0"/>
+        <text x="309" y="82" font-family="sans-serif" font-size="18" fill="#F57C00" font-weight="700" text-anchor="middle">2</text>
+        <text x="309" y="104" font-family="sans-serif" font-size="7" fill="#E65100" text-anchor="middle">At Risk</text>
+        <rect x="340" y="60" width="50" height="50" rx="4" fill="#FFEBEE"/>
+        <text x="365" y="82" font-family="sans-serif" font-size="18" fill="#D32F2F" font-weight="700" text-anchor="middle">1</text>
+        <text x="365" y="104" font-family="sans-serif" font-size="7" fill="#C62828" text-anchor="middle">Disengaged</text>
+        <text x="336" y="122" font-family="sans-serif" font-size="7.5" fill="#555" text-anchor="middle">100% contacted on schedule</text>
+        <text x="336" y="136" font-family="sans-serif" font-size="7.5" fill="#27AE60" font-weight="600" text-anchor="middle">35% avg engagement increase</text>
+        <text x="336" y="148" font-family="sans-serif" font-size="7.5" fill="#555" text-anchor="middle">4hrs/week saved on follow-ups</text>
+      </svg></div>
+    </div>
+  </div>
+
+</div><!-- end work-samples-grid -->
+
+
+  </div>
+</section>
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills &amp; Tech Stack</h2>
+            <p class="section-subtitle">Tools and expertise that drive results</p>
+            <div class="skills-container">
+                <div class="skills-category"><h3>📱 Productivity &amp; Communication</h3><div class="skills-list"><span class="skill-tag">Google Workspace</span><span class="skill-tag">Gmail</span><span class="skill-tag">Google Calendar</span><span class="skill-tag">Calendly</span><span class="skill-tag">Slack</span><span class="skill-tag">Zoom</span><span class="skill-tag">MS Office 365</span></div></div>
+                <div class="skills-category"><h3>📊 Project Management</h3><div class="skills-list"><span class="skill-tag">Asana</span><span class="skill-tag">Trello</span><span class="skill-tag">Monday.com</span><span class="skill-tag">ClickUp</span><span class="skill-tag">Notion</span><span class="skill-tag">Airtable</span></div></div>
+                <div class="skills-category"><h3>🤝 CRM &amp; Sales</h3><div class="skills-list"><span class="skill-tag">HubSpot</span><span class="skill-tag">Zendesk</span><span class="skill-tag">Zoho</span><span class="skill-tag">Salesforce</span></div></div>
+                <div class="skills-category"><h3>🎨 Content &amp; Design</h3><div class="skills-list"><span class="skill-tag">Canva</span><span class="skill-tag">Buffer</span><span class="skill-tag">Hootsuite</span><span class="skill-tag">Grammarly</span></div></div>
+                <div class="skills-category"><h3>📈 Research &amp; Analysis</h3><div class="skills-list"><span class="skill-tag">Google Sheets</span><span class="skill-tag">Excel</span><span class="skill-tag">Data Visualization</span><span class="skill-tag">ChatGPT</span></div></div>
+                <div class="skills-category"><h3>⭐ Core Competencies</h3><div class="skills-list"><span class="skill-tag">Email Management</span><span class="skill-tag">Calendar Optimization</span><span class="skill-tag">Research &amp; Analysis</span><span class="skill-tag">SOP Documentation</span><span class="skill-tag">Process Design</span><span class="skill-tag">Cross-timezone Coordination</span></div></div>
+            </div>
+        </div>
+    </section>
+    <!-- WHO I HELP -->
+    <section style="background-color:#F5F5F5;">
+        <div class="container">
+            <h2 class="section-title">Who I Help</h2>
+            <div class="who-help-grid">
+                <div class="help-card"><div class="help-icon">🚀</div><h3>Busy Founders</h3><p>Overwhelmed with emails, meetings, and operations. Need support to focus on product and growth.</p></div>
+                <div class="help-card"><div class="help-icon">💼</div><h3>CEOs &amp; Executives</h3><p>Managing teams and strategy. Need reliable support for calendar, inbox, and daily priorities.</p></div>
+                <div class="help-card"><div class="help-icon">🏢</div><h3>Small Business Owners</h3><p>Running lean teams. Need administrative leverage to scale operations without hiring full-time staff.</p></div>
+                <div class="help-card"><div class="help-icon">📈</div><h3>Growth-Focused Leaders</h3><p>Want to reclaim time for strategy and execution. Need systems that free up mental bandwidth.</p></div>
+            </div>
+        </div>
+    </section>
+    <!-- BENEFITS -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">How This Helps You</h2>
+            <div class="services-grid">
+                <div class="service-card"><div class="service-icon">🎯</div><h3>No Missed Opportunities</h3><p>Every email, follow-up, and deadline is tracked and prioritized. Nothing falls through the cracks.</p></div>
+                <div class="service-card"><div class="service-icon">⏱️</div><h3>Reclaim Your Time</h3><p>Gain 5-10 hours per week back. Focus on strategy and execution, not admin work.</p></div>
+                <div class="service-card"><div class="service-icon">🧠</div><h3>Reduce Mental Load</h3><p>Let go of the stress of managing calendars, emails, and operations. Focus on what matters.</p></div>
+                <div class="service-card"><div class="service-icon">📊</div><h3>Faster Decisions</h3><p>Get clear research, data, and insights when you need them. Make informed decisions quickly.</p></div>
+                <div class="service-card"><div class="service-icon">✨</div><h3>Professional Operations</h3><p>Clean systems, organized workflows, and professional communication. Scale without chaos.</p></div>
+                <div class="service-card"><div class="service-icon">🤝</div><h3>Peace of Mind</h3><p>Know that everything is handled. Have a reliable partner who knows your business inside out.</p></div>
+            </div>
+        </div>
+    </section>
+    <!-- TESTIMONIALS -->
+    <section style="background-color:#F5F5F5;">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <p class="section-subtitle">Results that speak for themselves</p>
+            <div class="testimonials-grid">
+                <div class="testimonial"><p class="testimonial-text">"Reduced scheduling conflicts by 50% and gained 4+ hours of focus time weekly. Game-changer for my productivity."</p><p class="testimonial-author">CEO, Tech Startup</p></div>
+                <div class="testimonial"><p class="testimonial-text">"Research and competitive analysis gave us clarity for investor pitches. Data-driven insights that made a real difference."</p><p class="testimonial-author">Founder, SaaS Company</p></div>
+                <div class="testimonial"><p class="testimonial-text">"Email response time improved from 48 hours to 3 hours. My inbox has never been cleaner or more organized."</p><p class="testimonial-author">Executive, Professional Services</p></div>
+                <div class="testimonial"><p class="testimonial-text">"Streamlined workflow reduced missed deadlines by 70% and freed up 5 hours of team time weekly. Incredible ROI."</p><p class="testimonial-author">Marketing Manager</p></div>
+                <div class="testimonial"><p class="testimonial-text">"Project management system brought order to chaos. Team is more coordinated, deadlines are met, and visibility is crystal clear."</p><p class="testimonial-author">Operations Director</p></div>
+                <div class="testimonial"><p class="testimonial-text">"Client relationship tracking system identified at-risk accounts before they disengaged. Saved key relationships and improved engagement by 35%."</p><p class="testimonial-author">Sales Lead</p></div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2>Ready to Reclaim Your Time?</h2>
+            <p>Let's discuss how I can help you manage your inbox, calendar, and operations so you can focus on strategy and growth.</p>
+            <p style="font-style:italic;opacity:.9;margin-bottom:var(--spacing-lg);">Start with a trial task to experience my work style, or let's schedule a consultation to explore a longer partnership.</p>
+            <div class="contact-links">
+                <a href="mailto:ayorinderemilekunpeter@gmail.com" class="contact-link">📧 Email Me</a>
+                <a href="https://linkedin.com/in/remilekun-ayorinde" target="_blank" class="contact-link">💼 LinkedIn Profile</a>
+            </div>
+            <div class="contact-info">
+                <p>📧 <strong>ayorinderemilekunpeter@gmail.com</strong></p>
+                <p>💬 I typically respond within 3 hours during business hours</p>
+                <p style="margin-top:var(--spacing-md);font-size:13px;">Remote (Global) • Flexible Availability • Trial Option Available</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 Remilekun Peter Ayorinde. All rights reserved.</p>
+        <p style="font-size:12px;margin-top:10px;opacity:.8;">Executive Virtual Assistant | Calendar • Inbox • Operations Support</p>
+    </footer>
+    <script>
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
